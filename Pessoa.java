@@ -1,23 +1,25 @@
-// Código "Errado"
-
 public class Pessoa {
-    public String nome;
-    public int idade;
+    private String nome;
+    private int idade;
 
     public Pessoa(String nome, int idade) {
         this.nome = nome;
-        this.idade = idade;
+        setIdade(idade); // usa validação
     }
 
-    public static void main(String[] args) {
-        Pessoa tom = new Pessoa("Tom", -5);
+    public String getNome() {
+        return nome;
+    }
 
-        // Já começa com valor inválido
-        System.out.println("Idade inicial: " + tom.idade); // -5
+    public int getIdade() {
+        return idade;
+    }
 
-        // Qualquer parte do código pode alterar diretamente
-        tom.idade = -999;
-
-        System.out.println("Idade alterada: " + tom.idade); // -999
+    public void setIdade(int idade) {
+        if (idade < 0) {
+            System.out.println("Idade inválida!");
+        } else {
+            this.idade = idade;
+        }
     }
 }
